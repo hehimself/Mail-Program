@@ -40,8 +40,12 @@ public class ProtocolHelper {
         l_builder.append(createLineResponse(p_statusCode,p_statusMessage));
         if (p_messages != null && !p_messages.isEmpty()){
             for (String l_msg : p_messages){
+                if (l_msg.startsWith(".")){
+                    l_builder.append(".");
+                }
                 l_builder.append(l_msg).append("\r\n");
             }
+            l_builder.append(".").append("\r\n");
         }
         return l_builder.toString();
     }
