@@ -35,7 +35,15 @@ public class ProtocolHelper {
     }
 
     public static String createMultiLineResponse(String p_statusCode, String p_statusMessage, List<String> p_messages){
-        return null;
+        StringBuilder l_builder = new StringBuilder();
+
+        l_builder.append(createLineResponse(p_statusCode,p_statusMessage));
+        if (p_messages != null && !p_messages.isEmpty()){
+            for (String l_msg : p_messages){
+                l_builder.append(l_msg).append("\r\n");
+            }
+        }
+        return l_builder.toString();
     }
 
 }
