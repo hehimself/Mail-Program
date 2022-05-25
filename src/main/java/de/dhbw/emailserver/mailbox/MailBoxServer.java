@@ -35,15 +35,13 @@ public class MailBoxServer implements Runnable {
                     l_out.write(l_response);
                     l_out.flush();
                 }
-                else if ("QUIT".equals(l_cmd[0])){
+                else if ("QUIT".equals(l_cmd[0])) {
                     String l_response = ProtocolHelper.createLineResponse("200", "bye");
                     l_out.write(l_response);
                     l_out.flush();
                     l_client.close();
                     break;
                 }
-
-
             }
         } catch (IOException ex) {
             ex.printStackTrace();
